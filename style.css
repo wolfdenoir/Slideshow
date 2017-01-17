@@ -1,0 +1,29 @@
+#main-carousel {
+  width: 690px;
+  height: 460px;
+  overflow: hidden;
+}
+
+#main-carousel div.carousel-caption {
+  top: 300px;
+}
+
+.carousel-inner > .item > a > img, .carousel-inner > .item > img, .img-responsive, .thumbnail a > img, .thumbnail > img {
+  margin: auto;
+  max-height: 460px;
+}
+
+.carousel-control, .carousel-control:hover, .carousel-control:visited {
+  color: #0072c6 !important;
+  background-image: none !important;
+}
+
+.carousel-indicators li {
+  background-color: rgba(0,0,0,0);
+  border: 1px solid #0072c6;
+  border-radius: 10px;
+}
+
+.carousel-indicators li.active {
+  background-color: #0072c6;
+}
