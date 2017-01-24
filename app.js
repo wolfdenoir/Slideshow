@@ -33,8 +33,11 @@ function getPictures() {
   getListItems(this.strList, camlQueryText,
     function(items) {
       var pictureEntries = [];
-      if (items.length == 0)
+      if (items.get_count() == 0)
         return;
+      else if ($("#main-carousel").hasClass("hidden"))
+        $("#main-carousel").removeClass("hidden");
+
       for (var i = 0; i < items.get_count(); i++) {
         var item = items.getItemAtIndex(i);
         var entry = {
@@ -53,8 +56,6 @@ function getPictures() {
 
       $("#slideshow-images").children().eq(0).addClass("active");
       $("#slideshow-indicators").children().eq(0).addClass("active");
-      if ($("#main-carousel").hasClass("hidden"))
-        $("#main-carousel").removeClass("hidden");
     },
     Function.createDelegate(this, onQueryFailed));
 }
