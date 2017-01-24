@@ -33,6 +33,8 @@ function getPictures() {
   getListItems(this.strList, camlQueryText,
     function(items) {
       var pictureEntries = [];
+      if (items.length == 0)
+        return;
       for (var i = 0; i < items.get_count(); i++) {
         var item = items.getItemAtIndex(i);
         var entry = {
@@ -43,7 +45,7 @@ function getPictures() {
         $("#slideshow-images").append(
           $("<div/>", {
             "class": "item",
-          }).html('<img src="' + entry.Url + '" alt="..."><div class="carousel-caption"><h3>' + (entry.Name != null?entry.Name:"") + '</h3></div>')
+          }).html('<img src="' + entry.Url + '" alt="..."><div class="carousel-caption"><h3>' + (entry.Name != null ? entry.Name : "") + '</h3></div>')
         );
 
         $("#slideshow-indicators").html($("#slideshow-indicators").html() + '<li data-target="#main-carousel" data-slide-to="' + i + '"></li>');
@@ -51,6 +53,8 @@ function getPictures() {
 
       $("#slideshow-images").children().eq(0).addClass("active");
       $("#slideshow-indicators").children().eq(0).addClass("active");
+      if ($("#main-carousel").hasClass("hidden"))
+        $("#main-carousel").removeClass("hidden");
     },
     Function.createDelegate(this, onQueryFailed));
 }
